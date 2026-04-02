@@ -41,3 +41,62 @@ for student in raw_students:
 for s in cleaned_students:
     if s["roll"] == 103:
         print(f"Roll 103 - Upper: {s['name'].upper()}, Lower: {s['name'].lower()}\n")
+
+# Task 2: Marks Analysis (Focusing on Ayesha)
+print("--- Task 2: Marks Analysis (Ayesha) ---")
+subjects = ["Math", "Physics", "CS", "English", "Chemistry"]
+ayesha_marks = [88, 72, 95, 60, 78]
+
+for i in range(len(subjects)):
+    m = ayesha_marks[i]
+    if m >= 90: grade = "A+"
+    elif m >= 80: grade = "A"
+    elif m >= 70: grade = "B"
+    elif m >= 60: grade = "C"
+    else: grade = "F"
+    print(f"{subjects[i]}: {m} ({grade})")
+
+# Task 3: Class Performance Summary
+print("\n--- Task 3: Class Summary ---")
+class_data = [
+    ("Ayesha Sharma", [88, 72, 95, 60, 78]),
+    ("Rohit Verma", [55, 68, 49, 72, 61]),
+    ("Priya Nair", [91, 85, 88, 94, 79]),
+    ("Karan Mehta", [40, 55, 38, 62, 50]),
+    ("Sneha Pillai", [75, 80, 70, 68, 85]),
+]
+
+all_averages = []
+passed = 0
+failed = 0
+
+print(f"{'Name':<15} | {'Average':<7} | {'Status'}")
+print("-" * 35)
+
+for name, marks in class_data:
+    avg = round(sum(marks) / len(marks), 2)
+    status = "Pass" if avg >= 60 else "Fail"
+    all_averages.append(avg)
+    
+    if status == "Pass": passed += 1
+    else: failed += 1
+    
+    print(f"{name:<15} | {avg:<7.2f} | {status}")
+
+print(f"\nPassed: {passed}, Failed: {failed}")
+print(f"Class Average: {round(sum(all_averages)/len(all_averages), 2)}")
+
+# Task 4: String Manipulation
+print("\n--- Task 4: Essay Utility ---")
+essay = "  python is a versatile language. it supports object oriented, functional, and procedural programming. python is widely used in data science. "
+clean_essay = essay.strip() # Step 1
+print(f"Title Case: {clean_essay.title()}") # Step 2
+print(f"Python count: {clean_essay.lower().count('python')}") # Step 3
+replaced_essay = clean_essay.replace("python", "Python 🐍") # Step 4
+print(f"Replaced: {replaced_essay}")
+sentences = replaced_essay.split(". ") # Step 5
+for idx, sent in enumerate(sentences, 1): # Step 6
+    if sent:
+        formatted = sent.strip()
+        if not formatted.endswith("."): formatted += "."
+        print(f"{idx}. {formatted}")
